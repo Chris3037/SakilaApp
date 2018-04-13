@@ -20,18 +20,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-
-    // Tutorial followed: https://www.youtube.com/watch?v=Vcn4OuV4Ixg
-
     public static Context classContext;
     public static ListView listView;
     public static JSONArray jsonData;
-    //    Button click;
-//    public static String line ="{\"records\":[{\"title\":\"Movie 1\",\"rating\":\"PG\",\"rental_rate\":\"0.99\"},{\"title\":\"Movie 2\",\"rating\":\"R\",\"rental_rate\":\"2.99\"},{\"title\":\"Movie 3\",\"rating\":\"PG-13\",\"rental_rate\":\"1.99\"}]}";
-//    public static String line;
-
-    public static TextView results;
-//    public static ListView listView;
+    public static TextView results;;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,55 +33,17 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_view_1);
         results = (TextView) findViewById(R.id.results);
         classContext = this;
+
         results.setText("Fetching Data...");
 
         FetchJSON process = new FetchJSON();
         process.execute();
-//        process.onPostExecute(null);
-
-//        results.setText(line);
-
-//        URL url;
-//        while (line == null) {}
-//        results.setText(":)");
-
-
-
-//        FetchJSON process = new FetchJSON();
-//        process.execute();
-//
-//        String[] titles = {"Chris", "Bob", "Jess", "Frank", "Ella", "Phil", "Sue", "Jenn"};
-//        String[] descs = {"Chris is nice.", "Bob is mean.", "Jess is swell.", "Frank is greedy.", "Ella is beautiful.", "Phil is savage.", "Sue is sweet.", "Jenn is nasty."};
-//        ListView listView = (ListView) findViewById(R.id.list_view_1);
-//        StringArrayAdapter adapter = new StringArrayAdapter(titles, descs, this);
-//        listView.setAdapter(adapter);
-
-//        click = (Button) findViewById(R.id.button);
-//        data = (TextView) findViewById(R.id.data);
-
-
-//        click.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Executed when button is pressed
-//                WaitingForData();
-//
-//                FetchData process = new FetchData();
-//                process.execute();
-//            }
-//            private void WaitingForData() {
-//                // TODO: Make animation while waiting for data. Ie. animated ellipsis, percentage, loading bar, circle loading bar
-//                data.setText("Fetching data...");
-//            }
-//        });
+        // TODO: Make animation while waiting for data. Ie. animated ellipsis, percentage, loading bar, circle loading bar
 
 
     }
     public static void PopulateView(String data) {
-//        results.setText(data);
         try {
-//            data = "{\"records\":[{\"title\":\"Movie 1\",\"rating\":\"PG\",\"rental_rate\":\"0.99\"},{\"title\":\"Movie 2\",\"rating\":\"R\",\"rental_rate\":\"2.99\"},{\"title\":\"Movie 3\",\"rating\":\"PG-13\",\"rental_rate\":\"1.99\"}]}";
-
             JSONObject obj1 = new JSONObject(data);
             JSONArray arr1 = obj1.getJSONArray("records");
             jsonData = obj1.getJSONArray("records");
@@ -116,13 +70,14 @@ public class MainActivity extends AppCompatActivity {
             listView.setAdapter(adapter);
             results.setText("Hello World.");
 
-            String asdf = "";
-            for (int i = 0; i < max; i++) {
-                asdf += titlesArray[i].toString() + " | ";
-            }
 
-//            results.setText(asdf);
-//            results.setText(titlesArray[9].toString());
+//        // Temp display
+//        String output = "";
+//        for (int j = 0; j < titlesArray.length; j++) {
+//            output += titlesArray[j] + " | ";
+//        }
+//        results.setText(output);
+//        // End temp display
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -130,8 +85,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-//names = {"Chris", "Bob", "Jess", "Frank", "Ella"};
-
 
 

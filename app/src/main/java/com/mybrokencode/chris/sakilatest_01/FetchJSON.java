@@ -17,10 +17,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class FetchJSON extends AsyncTask<Void, Void, Void> {
-
-//    String[] titlesArray;
-//    String[] descsArray;
-//    String line;
     String data;
 
     @Override
@@ -43,63 +39,17 @@ public class FetchJSON extends AsyncTask<Void, Void, Void> {
 
             String line;
             data = "";
-//            while (line != null) {
-//                line = bufferedReader.readLine();
-//                data += line;
-//            }
             while ((line = bufferedReader.readLine()) != null) {
-//                line = bufferedReader.readLine();
                 data += line;
             }
 
 
-
-//            MainActivity.data = line;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        URL url;
-//        try {
-//            url = new URL("http://mybrokencode.com/sakila/api/film/read.php");
-//
-//            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-//            InputStream inputStream = httpURLConnection.getInputStream();
-//            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-//
-//            String line = "";
-//            while (line != null) {
-//                line += bufferedReader.readLine();
-//            }
-//
-//            JSONObject obj1 = new JSONObject(line);
-//            JSONArray arr1 = obj1.getJSONArray("records");
-//
-//            String[] titlesArray = new String[arr1.length()];
-//            String[] descsArray = new String[arr1.length()];
-//
-//            for (int i = 0; i < arr1.length(); i++) {
-//                JSONObject jsonObject = arr1.getJSONObject(i);
-//
-//                titlesArray[i] = jsonObject.getString("title");
-//                descsArray[i] = jsonObject.getString("description");
-//            }
-//
-//
-////            ListView listView = (ListView) findViewById(R.id.list_view_1);
-////            StringArrayAdapter adapter = new StringArrayAdapter(titlesArray, descsArray, this);
-////            listView.setAdapter(adapter);
-//
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
 
         return null;
     }
@@ -108,13 +58,6 @@ public class FetchJSON extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-//        MainActivity.data.setText(this.dataParsed);
-//        MainActivity.results.setText(data);
-//        MainActivity.line = data;
-
         MainActivity.PopulateView(data);
-
-//        MainActivity.DoThings
-//        MainActivity.listView.add
     }
 }

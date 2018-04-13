@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -46,14 +47,14 @@ public class StringArrayAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         // Create the cell (View) and populate it with an element of the data.
 
-        // Causes vie to be recycled... but it's how tutorials do it. idk
+        // Causes view to be recycled... but it's how other people do it. idk
 //        if (view == null) {
             // Default view
 //            view = inflater.inflate(android.R.layout.simple_list_item_1, viewGroup, false);
 //            TextView name = (TextView)view.findViewById(android.R.id.text1);
 //            name.setText(titles[i]);
 
-            // Custom view.
+        // Custom view.
         view = inflater.inflate(R.layout.single_row, viewGroup, false);
         TextView title = view.findViewById(R.id.title);
         TextView desc = view.findViewById(R.id.desc);
@@ -67,12 +68,18 @@ public class StringArrayAdapter extends BaseAdapter {
         title.setText(movie_title);
         desc.setText(movie_desc);
 
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
                     for (int j = 0; j < filmValues.length; j++) {
-                        // TODO: Implement film page. filmInfo is what will be passed into new activity.
                         filmInfo[j] = MainActivity.jsonData.getJSONObject(movie_index).getString(filmValues[j]);
                     }
                 } catch (JSONException e) {
@@ -81,11 +88,8 @@ public class StringArrayAdapter extends BaseAdapter {
 
                 // Starts new activity
                 Intent intent = new Intent(c, FilmActivity.class);
-                Bundle bundle = new Bundle();
-//                bundle.putStringArray("filmInfo", filmInfo);
-//                bundle.putString("test", "asdf");
+//                Bundle bundle = new Bundle();
                 intent.putExtra("filmInfo", filmInfo);
-//                intent.putExtras(bundle);
                 c.startActivity(intent);
 
 //                // Temp display

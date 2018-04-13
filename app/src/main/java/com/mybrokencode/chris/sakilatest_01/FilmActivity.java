@@ -15,18 +15,21 @@ public class FilmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_film);
 
         results = (TextView) findViewById(R.id.results);
+        TextView text_title = (TextView) findViewById(R.id.title);
+        TextView text_description = (TextView) findViewById(R.id.description);
 
         Intent intentExtras = getIntent();
         String[] filmInfo = intentExtras.getStringArrayExtra("filmInfo");
 
-//        results.setText("Title: " + filmInfo[1]);
+        text_title.setText(filmInfo[1]);
+        text_description.setText(filmInfo[2]);
 
-        // Temp display
-        String output = "";
-        for (int j = 0; j < filmInfo.length; j++) {
-            output += filmInfo[j] + " | ";
-        }
-        results.setText(output);
-        // End temp display
+//        // Temp display
+//        String output = "";
+//        for (int j = 0; j < filmInfo.length; j++) {
+//            output += filmInfo[j] + " | ";
+//        }
+//        results.setText(output);
+//        // End temp display
     }
 }
